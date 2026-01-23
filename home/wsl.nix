@@ -1,12 +1,10 @@
-{ ... }:
+{...}: {
+  home.username = "andher";
+  home.homeDirectory = "/home/andher";
 
-{
-    home.username = "andher";
-    home.homeDirectory = "/home/andher";
+  imports = [
+    ./common.nix
+  ];
 
-    imports = [
-        ./common.nix
-    ];
-
-    targets.genericLinux.enable = true;
+  targets.genericLinux.enable = true;
 }

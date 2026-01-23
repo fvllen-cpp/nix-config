@@ -1,6 +1,8 @@
-{ config, pkgs, ... }:
-
 {
+  config,
+  pkgs,
+  ...
+}: {
   home.packages = with pkgs; [
     # C/C++
     clang-tools
@@ -8,7 +10,11 @@
     cmake
 
     # Python
-    pyright 
+    pyright
     ruff
+
+    # Nix
+    nil
+    alejandra
   ];
 }

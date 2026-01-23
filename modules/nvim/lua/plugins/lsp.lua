@@ -14,6 +14,14 @@ return {
             }
           }
         },
+
+        nil_ls = {
+          ["nil"] = {
+            formatting = {
+              command = { "alejandra" },
+            }
+          }
+        },
       }
     }
   }

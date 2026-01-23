@@ -6,6 +6,7 @@ return {
         c = { "clang_format" },
         cpp = { "clang_format" },
         python = { "ruff_format" },
+        nix = { "alejandra" },
       },
     },
   },
