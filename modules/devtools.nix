@@ -16,5 +16,9 @@
     # Nix
     nil
     alejandra
+
+    # JSON
+    nodePackages.vscode-json-languageserver
+    nodePackages.yaml-language-server
   ];
 }

@@ -22,6 +22,10 @@ return {
             }
           }
         },
+
+        jsonls = {},
+
+        yamlls = {},
       }
     }
   }
