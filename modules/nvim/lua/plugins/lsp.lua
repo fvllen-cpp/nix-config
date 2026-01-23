@@ -1,23 +1,20 @@
 return {
-    {
-	"neovim/nvim-lspconfig",
-	opts = {
-	    servers = {
-		clangd = { 
-		    cmd = { "clangd", "--background-index" },
-		    filetypes = { "c", "cpp", "objc", "objcpp", "h", "hpp" },
-		},
+  {
+    "neovim/nvim-lspconfig",
+    opts = {
+      servers = {
+        clangd = {},
 
-		pyright = {
-		    settings = {
-			python = {
-			    analysis = {
-				typeCheckingMode = "basic",
-			    }
-			}
-		    }
-		},
-	    }
-	}
+        pyright = {
+          settings = {
+            python = {
+              analysis = {
+                typeCheckingMode = "basic",
+              }
+            }
+          }
+        },
+      }
     }
+  }
 }
