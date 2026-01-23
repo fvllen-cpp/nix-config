@@ -11,7 +11,7 @@
 #        ../modules/shell.nix
 #        ../modules/git.nix
         ../modules/neovim.nix
-#        ../modules/devtools.nix
+        ../modules/devtools.nix
     ];
 
     home.packages = with pkgs; [
