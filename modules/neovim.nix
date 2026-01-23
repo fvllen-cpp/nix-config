@@ -1,0 +1,22 @@
+{ pkgs, ... }:
+
+{
+    programs.neovim = {
+        enable = true;
+        defaultEditor = true;
+
+	withNodeJs = true;
+	withPython3 = true;
+	withRuby = false;
+    };
+
+    home.packages = with pkgs; [
+	ripgrep
+	fd
+	lazygit
+	nodejs
+	gcc
+    ];
+
+    xdg.configFile."nvim".source = ./nvim;
+}
