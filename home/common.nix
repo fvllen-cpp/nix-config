@@ -9,7 +9,7 @@
 
     imports = [
 #        ../modules/shell.nix
-#        ../modules/git.nix
+        ../modules/git.nix
         ../modules/neovim.nix
         ../modules/devtools.nix
     ];
