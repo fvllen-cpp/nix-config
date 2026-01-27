@@ -1,10 +1,10 @@
 {pkgs, ...}: {
-  home.username = "andresah21";
-  home.homeDirectory = "/Users/andresah21";
-
   imports = [
     ./common.nix
   ];
+
+  home.username = "andresah21";
+  home.homeDirectory = "/Users/andresah21";
 
   programs.kitty = {
     enable = true;

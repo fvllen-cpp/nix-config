@@ -1,10 +1,10 @@
 {...}: {
-  home.username = "user";
-  home.homeDirectory = "/home/user";
-
   imports = [
     ./common.nix
   ];
+
+  home.username = "user";
+  home.homeDirectory = "/home/user";
 
   targets.genericLinux.enable = true;
 }
