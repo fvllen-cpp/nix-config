@@ -12,25 +12,25 @@ Cross-platform, reproducible development environment using Nix and Home Manager.
 ## Quick Start
 
 ### macOS
-\`\`\`bash
+```shell
 git clone https://github.com/yourusername/nix-config.git ~/.config/nix
 cd ~/.config/nix
 nix run home-manager -- switch --flake .#darwin
-\`\`\`
+```
 
 ### Linux
-\`\`\`bash
+```shell
 git clone https://github.com/yourusername/nix-config.git ~/.config/nix
 cd ~/.config/nix
 nix run home-manager -- switch --flake .#linux
-\`\`\`
+```
 
 ### WSL
-\`\`\`bash
+```shell
 git clone https://github.com/yourusername/nix-config.git ~/.config/nix
 cd ~/.config/nix
 nix run home-manager -- switch --flake .#wsl
-\`\`\`
+```
 
 ## Structure
 
@@ -43,8 +43,8 @@ nix run home-manager -- switch --flake .#wsl
 
 ## Updating
 
-\`\`\`bash
+```shell
 cd ~/.config/nix
 nix flake update
 home-manager switch --flake .#darwin  # or linux/wsl
-\`\`\`
+```
