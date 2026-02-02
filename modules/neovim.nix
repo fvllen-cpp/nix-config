@@ -14,6 +14,8 @@
 
       # Linters
       ruff
+
+      tree-sitter
     ];
   };
 
