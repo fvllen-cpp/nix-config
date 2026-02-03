@@ -3,8 +3,8 @@
     ./common.nix
   ];
 
-  home.username = "andher";
-  home.homeDirectory = "/home/andher";
+  home.username = "andres";
+  home.homeDirectory = "/home/andres";
 
   targets.genericLinux.enable = true;
 }
