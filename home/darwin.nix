@@ -38,6 +38,10 @@
       "cmd+minus" = "change_font_size all -2.0";
       "cmd+0" = "change_font_size all 0";
     };
+
+    extraConfig = ''
+      mouse_map right press ungrapped copy_to_clipboard
+    '';
   };
 
   home.packages = with pkgs; [

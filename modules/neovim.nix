@@ -16,6 +16,8 @@
       ruff
 
       tree-sitter
+
+      lua-language-server
     ];
   };
 
