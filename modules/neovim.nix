@@ -14,6 +14,10 @@
       lua-language-server
       neocmakelsp
 
+      # Formatters
+      shfmt
+      stylua
+
       # Linters
       ruff
 
