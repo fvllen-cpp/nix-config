@@ -25,6 +25,7 @@
     ripgrep
     fd
     lazygit
+    lazydocker
     nodejs
     gcc
   ];

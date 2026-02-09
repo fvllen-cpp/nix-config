@@ -5,5 +5,5 @@
 vim.opt.termguicolors = true
 
 if vim.fn.has("termguicolors") == 1 then
-  vim.opt.termguicolors = true
+    vim.opt.termguicolors = true
 end
