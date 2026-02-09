@@ -11,13 +11,13 @@
       # Language servers
       clang-tools
       pyright
+      lua-language-server
+      neocmakelsp
 
       # Linters
       ruff
 
       tree-sitter
-
-      lua-language-server
     ];
   };
 
