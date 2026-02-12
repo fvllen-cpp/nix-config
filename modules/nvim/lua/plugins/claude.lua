@@ -6,6 +6,16 @@ return {
   enabled = function()
     return vim.g.ai_tools and vim.g.ai_tools.claude
   end,
+  config = function(_, opts)
+    require("claude-code").setup(opts)
+    -- Map <Esc> to exit terminal mode in Claude terminal
+    vim.api.nvim_create_autocmd("TermOpen", {
+      pattern = "term://*claude*",
+      callback = function()
+        vim.keymap.set('t', '<Esc>', '<C-\\><C-n>', { buffer = true, desc = 'Exit terminal mode' })
+      end,
+    })
+  end,
   opts = {
     -- Terminal window settings
     window = {
