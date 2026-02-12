@@ -15,7 +15,10 @@
   }: {
     homeConfigurations = {
       darwin = home-manager.lib.homeManagerConfiguration {
-        pkgs = import nixpkgs {system = "aarch64-darwin";};
+        pkgs = import nixpkgs {
+          system = "aarch64-darwin";
+          config.allowUnfree = true;
+        };
         modules = [
           ./home/common.nix
           ./home/darwin.nix
@@ -23,7 +26,10 @@
       };
 
       linux = home-manager.lib.homeManagerConfiguration {
-        pkgs = import nixpkgs {system = "x86_64-linux";};
+        pkgs = import nixpkgs {
+          system = "x86_64-linux";
+          config.allowUnfree = true;
+        };
         modules = [
           ./home/common.nix
           ./home/linux.nix
@@ -31,7 +37,10 @@
       };
 
       wsl = home-manager.lib.homeManagerConfiguration {
-        pkgs = import nixpkgs {system = "x86_64-linux";};
+        pkgs = import nixpkgs {
+          system = "x86_64-linux";
+          config.allowUnfree = true;
+        };
         modules = [
           ./home/common.nix
           ./home/wsl.nix

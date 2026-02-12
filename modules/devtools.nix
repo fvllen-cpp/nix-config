@@ -20,5 +20,11 @@
     # JSON
     nodePackages.vscode-json-languageserver
     nodePackages.yaml-language-server
+
+    # Claude Code
+    claude-code
+
+    # Codex for OpenAI
+    codex
   ];
 }
