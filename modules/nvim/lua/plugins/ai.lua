@@ -1,4 +1,5 @@
-vim.g.ai_tools = {
-  claude = false,
-  codex = true,
-}
+-- AI tool plugins are configured in:
+-- - plugins/claude.lua
+-- - plugins/codex.lua
+-- Enable/disable via vim.g.ai_tools in config/options.lua
+return {}
