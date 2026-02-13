@@ -11,7 +11,4 @@ if ok then
       ["*"] = osc52.paste("*"),
     },
   }
-
-  -- Make regular yanks use system clipboard
-  vim.opt.clipboard = "unnamedplus"
 end

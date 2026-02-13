@@ -12,5 +12,8 @@ vim.g.ai_tools = {
 vim.opt.termguicolors = true
 
 if vim.fn.has("termguicolors") == 1 then
-    vim.opt.termguicolors = true
+  vim.opt.termguicolors = true
 end
+
+-- Force OSC52-style in container/remote-ish terminals
+vim.opt.clipboard = ""
