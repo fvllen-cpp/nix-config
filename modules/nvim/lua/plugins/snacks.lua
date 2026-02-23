@@ -13,5 +13,9 @@ return {
         },
       },
     },
+    explorer = {
+      replace_netrw = true,
+      trash = false,
+    },
   },
 }
