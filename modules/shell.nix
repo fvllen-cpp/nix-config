@@ -20,6 +20,9 @@
         neofetch
       fi
 
+      # Disable SIGQUIT on Ctrl+\ so it passes through to apps like Neovim
+      stty quit undef
+
       # Standard emacs-style keybindings (consistent across platforms)
       bindkey -e
 
