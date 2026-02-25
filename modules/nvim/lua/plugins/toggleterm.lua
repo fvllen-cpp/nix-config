@@ -5,6 +5,7 @@ return {
     { '<leader>t', '<cmd>ToggleTerm<CR>', desc = 'Open terminal' },
   },
   opts = {
+    shell = vim.fn.executable("zsh") == 1 and "zsh" or "bash",
     direction = 'float',
     shade_terminals = true,
     start_in_insert = true,
