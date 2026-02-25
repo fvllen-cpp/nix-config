@@ -1,6 +1,7 @@
 {
   config,
   pkgs,
+  claude-code-pkg,
   ...
 }: {
   home.packages = with pkgs; [
@@ -25,8 +26,8 @@
     nodePackages.vscode-json-languageserver
     nodePackages.yaml-language-server
 
-    # Claude Code
-    claude-code
+    # Claude Code (from sadjow/claude-code-nix flake, auto-updated hourly - careful with such updates)
+    claude-code-pkg
 
     # Codex for OpenAI
     codex
