@@ -17,3 +17,5 @@ end
 
 -- Force OSC52-style in container/remote-ish terminals
 vim.opt.clipboard = ""
+require("config.clipboard")
+vim.opt.clipboard = "unnamedplus"
