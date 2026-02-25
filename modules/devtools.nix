@@ -10,8 +10,12 @@
     cmake
 
     # Python
+    python3
     pyright
     ruff
+
+    # Devicetree
+    dtc
 
     # Nix
     nil
@@ -26,5 +30,10 @@
 
     # Codex for OpenAI
     codex
+
+    # Useful CLI tools
+    wget
+    file
+    ccache
   ];
 }
