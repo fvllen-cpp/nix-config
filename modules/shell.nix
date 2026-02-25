@@ -1,4 +1,12 @@
 {pkgs, ...}: {
+  programs.bash = {
+    enable = true;
+    initExtra = ''
+      # Disable SIGQUIT on Ctrl+\ so it passes through to apps like Neovim
+      stty quit undef
+    '';
+  };
+
   programs.zsh = {
     enable = true;
     enableCompletion = true;

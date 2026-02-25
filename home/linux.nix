@@ -9,6 +9,7 @@
 
   targets.genericLinux.enable = true;
 
+
   programs.kitty.keybindings = {
     # Linux shortcuts (Ctrl)
     "ctrl+t" = "new_tab";
