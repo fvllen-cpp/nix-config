@@ -68,6 +68,12 @@
         style = "bold blue";
       };
 
+      python = {
+        format = "via [$symbol$virtualenv]($style) ";
+        symbol = "🐍 ";
+        style = "bold yellow";
+      };
+
       cmd_duration = {
         min_time = 2000;
         format = "took [$duration]($style) ";
