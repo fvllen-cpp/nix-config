@@ -20,22 +20,22 @@ return {
             python = {
               analysis = {
                 typeCheckingMode = "basic",
-              }
-            }
-          }
+              },
+            },
+          },
         },
 
         nil_ls = {
           ["nil"] = {
             formatting = {
               command = { "alejandra" },
-            }
-          }
+            },
+          },
         },
 
         jsonls = {},
         yamlls = {},
-        neocmake = {}
+        neocmake = {},
       },
 
       -- Neocmake
@@ -45,7 +45,7 @@ return {
           if not configs.neocmake then
             configs.neocmake = {
               default_config = {
-                cmd = { "neocmakelsp", "--stdio" },
+                cmd = { "neocmakelsp", "stdio" },
                 filetypes = { "cmake" },
                 root_dir = function(name)
                   return require("lspconfig.util").find_git_ancestor(name)
@@ -59,13 +59,13 @@ return {
                     enable = true,
                   },
                   scan_cmake_in_package = true,
-                }
-              }
+                },
+              },
             }
           end
           require("lspconfig").neocmake.setup(opts)
         end,
-      }
-    }
-  }
+      },
+    },
+  },
 }
