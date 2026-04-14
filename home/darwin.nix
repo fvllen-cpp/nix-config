@@ -4,8 +4,8 @@
     ../modules/kitty.nix
   ];
 
-  home.username = "andresah21";
-  home.homeDirectory = "/Users/andresah21";
+  home.username = "andres";
+  home.homeDirectory = "/Users/andres";
 
   programs.kitty.keybindings = {
     # macOS-friendly shortcuts (Cmd)

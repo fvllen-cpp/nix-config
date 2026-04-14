@@ -8,6 +8,14 @@ return {
         python = { "ruff_format" },
         nix = { "alejandra" },
       },
+
+      formatters = {
+        clang_format = {
+          prepend_args = {
+            "--style={BasedOnStyle: LLVM, IndendWidth: 4, ColumnLimit: 100}",
+          },
+        },
+      },
     },
   },
 }

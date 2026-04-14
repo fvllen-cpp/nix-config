@@ -5,8 +5,8 @@ return {
     opts = {
       linters_by_ft = {
         c = { "clangtidy" },
-	cpp = { "clangtidy" },
-	python = { "ruff" },
+        cpp = { "clangtidy" },
+        python = { "ruff" },
       },
     },
   },
