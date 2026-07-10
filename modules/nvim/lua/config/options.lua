@@ -5,8 +5,8 @@
 
 -- AI tools configuration (must be set before plugins load)
 vim.g.ai_tools = {
-  claude = true,
-  codex = false,
+  claude = false,
+  codex = true,
 }
 
 vim.opt.termguicolors = true
