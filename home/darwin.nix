@@ -7,6 +7,11 @@
   home.username = "andresh";
   home.homeDirectory = "/Users/andresh";
 
+  targets.darwin = {
+    linkApps.enable = false;
+    copyApps.enable = true;
+  };
+
   programs.kitty.keybindings = {
     # macOS-friendly shortcuts (Cmd)
     "cmd+t" = "new_tab";
