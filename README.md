@@ -13,21 +13,21 @@ Cross-platform, reproducible development environment using Nix and Home Manager.
 
 ### macOS
 ```shell
-git clone https://github.com/yourusername/nix-config.git ~/.config/nix
+git clone https://github.com/fvllen-cpp/nix-config.git ~/.config/nix
 cd ~/.config/nix
 nix run home-manager -- switch --flake .#darwin
 ```
 
 ### Linux
 ```shell
-git clone https://github.com/yourusername/nix-config.git ~/.config/nix
+git clone https://github.com/fvllen-cpp/nix-config.git ~/.config/nix
 cd ~/.config/nix
 nix run home-manager -- switch --flake .#linux
 ```
 
 ### WSL
 ```shell
-git clone https://github.com/yourusername/nix-config.git ~/.config/nix
+git clone https://github.com/fvllen-cpp/nix-config.git ~/.config/nix
 cd ~/.config/nix
 nix run home-manager -- switch --flake .#wsl
 ```
