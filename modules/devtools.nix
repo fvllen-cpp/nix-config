@@ -36,5 +36,6 @@
     wget
     file
     ccache
+    silicon
   ];
 }
