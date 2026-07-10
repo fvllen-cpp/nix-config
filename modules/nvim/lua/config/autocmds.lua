@@ -16,3 +16,31 @@ vim.api.nvim_create_autocmd("FileType", {
     vim.opt_local.expandtab = true
   end,
 })
+
+local transparent_groups = {
+  "Normal",
+  "NormalNC",
+  "NormalFloat",
+  "FloatBorder",
+  "FloatTitle",
+  "SignColumn",
+  "StatusLine",
+  "StatusLineNC",
+  "TabLine",
+  "TabLineFill",
+  "WinBar",
+  "WinBarNC",
+  "WinSeparator",
+}
+
+local function apply_transparency()
+  for _, group in ipairs(transparent_groups) do
+    vim.api.nvim_set_hl(0, group, { bg = "none" })
+  end
+end
+
+vim.api.nvim_create_autocmd("ColorScheme", {
+  callback = apply_transparency,
+})
+
+apply_transparency()

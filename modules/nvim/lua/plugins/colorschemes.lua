@@ -1,6 +1,13 @@
 return {
   {
     "folke/tokyonight.nvim",
+    opts = {
+      transparent = true,
+      styles = {
+        sidebars = "transparent",
+        floats = "transparent",
+      },
+    },
   },
   {
     "rebelot/kanagawa.nvim",
@@ -9,7 +16,7 @@ return {
     "Edeneast/nightfox.nvim",
   },
   {
-    "ellisonleao/gruvbox.nvim"
+    "ellisonleao/gruvbox.nvim",
   },
   {
     "sainnhe/everforest",
@@ -17,6 +24,7 @@ return {
   {
     "LazyVim/LazyVim",
     opts = {
+      colorscheme = "tokyonight",
     },
-  }
+  },
 }
