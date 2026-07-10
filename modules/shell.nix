@@ -23,9 +23,9 @@
     };
 
     initContent = ''
-      # Run neofetch on interactive shell startup
-      if command -v neofetch &> /dev/null; then
-        neofetch
+      # Run fastfetch on interactive shell startup
+      if command -v fastfetch &> /dev/null; then
+        fastfetch
       fi
 
       # Disable SIGQUIT on Ctrl+\ so it passes through to apps like Neovim
@@ -94,7 +94,7 @@
   };
 
   home.packages = with pkgs; [
-    neofetch
+    fastfetch
     starship
   ];
 }

@@ -23,8 +23,8 @@
     alejandra
 
     # JSON
-    nodePackages.vscode-json-languageserver
-    nodePackages.yaml-language-server
+    vscode-json-languageserver
+    yaml-language-server
 
     # Claude Code (from sadjow/claude-code-nix flake, auto-updated hourly - careful with such updates)
     claude-code-pkg
