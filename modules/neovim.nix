@@ -17,6 +17,7 @@
       # Formatters
       shfmt
       stylua
+      black
 
       # Linters
       ruff
