@@ -30,6 +30,15 @@ local function has_black_config(_, ctx)
   return find_black_config(ctx.filename) ~= nil
 end
 
+local function has_editorconfig(filename)
+  local config = vim.fs.find(".editorconfig", {
+    path = vim.fs.dirname(filename),
+    upward = true,
+  })
+
+  return #config > 0
+end
+
 local function clang_format_args(_, ctx)
   local config = vim.fs.find({ ".clang-format", "_clang-format" }, {
     path = vim.fs.dirname(ctx.filename),
@@ -45,6 +54,16 @@ local function clang_format_args(_, ctx)
   }
 end
 
+local function shfmt_args(_, ctx)
+  local args = { "-filename", "$FILENAME" }
+
+  if not has_editorconfig(ctx.filename) then
+    vim.list_extend(args, { "-i", "4" })
+  end
+
+  return args
+end
+
 return {
   {
     "stevearc/conform.nvim",
@@ -53,12 +72,17 @@ return {
         c = { "clang_format" },
         cpp = { "clang_format" },
         python = { "black_project", "ruff_format", stop_after_first = true },
+        sh = { "shfmt" },
+        bash = { "shfmt" },
         nix = { "alejandra" },
       },
 
       formatters = {
         clang_format = {
           prepend_args = clang_format_args,
+        },
+        shfmt = {
+          args = shfmt_args,
         },
         black_project = {
           command = "black",

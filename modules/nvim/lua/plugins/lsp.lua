@@ -1,9 +1,110 @@
+local function dirname(path)
+  return vim.fs.dirname(vim.fs.normalize(path))
+end
+
+local function file_exists(path)
+  return path and vim.fn.filereadable(path) == 1
+end
+
+local function ancestor_dirs(start, stop)
+  local dirs = {}
+  local current = dirname(start)
+  stop = stop and vim.fs.normalize(stop) or nil
+
+  while current and current ~= "" do
+    table.insert(dirs, current)
+    if current == stop then
+      break
+    end
+
+    local parent = vim.fs.dirname(current)
+    if parent == current then
+      break
+    end
+    current = parent
+  end
+
+  return dirs
+end
+
+local function find_compile_commands_dir(filename, root_dir)
+  for _, dir in ipairs(ancestor_dirs(filename, root_dir)) do
+    local direct = dir .. "/compile_commands.json"
+    if file_exists(direct) then
+      return dir
+    end
+
+    for _, child in ipairs({ "build", "out" }) do
+      local nested = dir .. "/" .. child .. "/compile_commands.json"
+      if file_exists(nested) then
+        return dir .. "/" .. child
+      end
+    end
+  end
+
+  return nil
+end
+
+local function buffer_or_path_to_filename(buffer_or_path)
+  if type(buffer_or_path) == "number" then
+    return vim.api.nvim_buf_get_name(buffer_or_path)
+  end
+  return buffer_or_path
+end
+
+local function find_clangd_root(buffer_or_path)
+  local filename = buffer_or_path_to_filename(buffer_or_path)
+  if not filename or filename == "" then
+    return vim.loop.cwd()
+  end
+
+  for _, dir in ipairs(ancestor_dirs(filename)) do
+    if find_compile_commands_dir(dir .. "/dummy.cc", dir) then
+      return dir
+    end
+  end
+
+  local matches = vim.fs.find({ ".clangd", ".clang-format", "_clang-format", ".git" }, {
+    path = dirname(filename),
+    upward = true,
+  })
+  return matches[1] and vim.fs.dirname(matches[1]) or vim.loop.cwd()
+end
+
+local function without_compile_commands_arg(cmd)
+  local filtered = {}
+  for _, arg in ipairs(cmd or { "clangd" }) do
+    if not arg:match("^%-%-compile%-commands%-dir=") then
+      table.insert(filtered, arg)
+    end
+  end
+  return filtered
+end
+
+local function clangd_root_dir(buffer_or_path, on_dir)
+  local root = find_clangd_root(buffer_or_path)
+  if on_dir then
+    on_dir(root)
+  end
+  return root
+end
+
 return {
   {
     "neovim/nvim-lspconfig",
     opts = {
       servers = {
         clangd = {
+          root_dir = clangd_root_dir,
+
+          on_new_config = function(config, root_dir)
+            local compile_commands_dir = find_compile_commands_dir(root_dir .. "/dummy.cc", root_dir)
+            if compile_commands_dir then
+              config.cmd = without_compile_commands_arg(config.cmd)
+              table.insert(config.cmd, "--compile-commands-dir=" .. compile_commands_dir)
+            end
+          end,
+
           capabilities = {
             offsetEncoding = { "utf-16" },
           },
