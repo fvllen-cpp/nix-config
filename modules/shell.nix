@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{lib, pkgs, ...}: {
   programs.bash = {
     enable = true;
     initExtra = ''
@@ -13,6 +13,14 @@
     autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
 
+    # Machine-local environment and secrets. This file is intentionally
+    # outside Home Manager and the public configuration repository.
+    envExtra = ''
+      if [[ -r "$HOME/.zshenv.local" ]]; then
+        source "$HOME/.zshenv.local"
+      fi
+    '';
+
     history = {
       size = 10000;
       save = 10000;
@@ -22,29 +30,39 @@
       share = true;
     };
 
-    initContent = ''
-      # Run fastfetch on interactive shell startup
-      if command -v fastfetch &> /dev/null; then
-        fastfetch
-      fi
+    initContent = lib.mkMerge [
+      (lib.mkOrder 1000 ''
+        # Run fastfetch on interactive shell startup
+        if [[ "''${ZSH_ENABLE_FASTFETCH:-1}" != "0" ]] && command -v fastfetch &> /dev/null; then
+          fastfetch
+        fi
 
-      # Disable SIGQUIT on Ctrl+\ so it passes through to apps like Neovim
-      stty quit undef
+        # Disable SIGQUIT on Ctrl+\ so it passes through to apps like Neovim
+        stty quit undef
 
-      # Standard emacs-style keybindings (consistent across platforms)
-      bindkey -e
+        # Standard emacs-style keybindings (consistent across platforms)
+        bindkey -e
 
-      # Navigation
-      bindkey '^[[H'    beginning-of-line       # Home
-      bindkey '^[[F'    end-of-line             # End
-      bindkey '^[[3~'   delete-char             # Delete
-      bindkey '^[[1;5C' forward-word            # Ctrl+Right
-      bindkey '^[[1;5D' backward-word           # Ctrl+Left
+        # Navigation
+        bindkey '^[[H'    beginning-of-line       # Home
+        bindkey '^[[F'    end-of-line             # End
+        bindkey '^[[3~'   delete-char             # Delete
+        bindkey '^[[1;5C' forward-word            # Ctrl+Right
+        bindkey '^[[1;5D' backward-word           # Ctrl+Left
 
-      # History search with Up/Down
-      bindkey '^[[A' history-search-backward    # Up
-      bindkey '^[[B' history-search-forward     # Down
-    '';
+        # History search with Up/Down
+        bindkey '^[[A' history-search-backward    # Up
+        bindkey '^[[B' history-search-forward     # Down
+      '')
+
+      # Load machine-local additions and overrides after every managed zsh
+      # integration so aliases, options, functions, and keybindings can win.
+      (lib.mkOrder 2000 ''
+        if [[ -r "$HOME/.zshrc.local" ]]; then
+          source "$HOME/.zshrc.local"
+        fi
+      '')
+    ];
   };
 
   programs.starship = {
